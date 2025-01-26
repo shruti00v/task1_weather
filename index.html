@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="weather.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Hello, world!</title>
+    <style>
+        .search-bar {
+            max-width: 60%;
+            padding-top: 10px;
+            padding-bottom: 0px;
+        }
+
+        .search-bar .input-group {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(50, 50, 50, 0.97);
+        }
+
+        .search-bar .form-control {
+            border: none;
+            padding-left: 20px;
+        }
+
+        .search-bar .btn {
+            border: none;
+            padding: 7px 20px;
+        }
+    </style>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css” />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div>
+        <h1
+            style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align:center; color:white; position:relative; right:20px; padding-top:50px; padding-bottom:0px">
+            WEATHER FORECAST</h1>
+    </div>
+    <!-- searchbar -->
+    <form>
+        <div class="container">
+            <div class="search-bar">
+                <div class="input-group">
+                    <input type="text" id="city" class="form-control" placeholder="Enter the city name"
+                        aria-label="Search" aria-describedby="search-addon">
+                    <button class="btn btn-outline-secondary" type="submit" id="sub">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="script.js"></script>
+
+    <div style="max-width:100% " class="row d-flex justify-content-center py-5">
+        <div class="col-md-8 col-lg-6 col-xl-5">
+
+            <div class="card text-body" style=" border-radius: 35px; height:400px">
+                <div class="card-body p-4">
+
+                    <!-- city and date -->
+                    <div class="d-flex">
+                        <h5 style="color: #868B94;" class="flex-grow-1"><span id="cityName"></span></h5>
+                        <h5 style="color: #868B94;"><span id="date_us"></span></h5>
+                    </div>
+
+                    <!-- current temp, main condition -->
+                    <div class="d-flex flex-column mt-5 mb-4">
+                        <h6 class="display-3 mb-0 font-weight-bold" id="temp_current"> </h6>
+                        <span style="color: #868B94; font-size:1.2em; position: relative; right:-40px;"
+                            id="hehe"></span>
+                    </div>
+
+                    <!-- feels like,wind, humidity -->
+                    <div class="d-flex">
+                        <div class="flex-grow-1" style="font-size: 1rem;">
+                            <div><i class="fa-solid fa-temperature-three-quarters"
+                                    style="color: #868B94; position: relative; right:-3px; padding-right:10px"></i>
+                                <span class="ms-1" id="feels_like">
+                                </span></div>
+                            <div><i class="fas fa-wind fa-fw" style="color: #868B94; "></i> <span class="ms-1"
+                                    id="speed">km/h
+                                </span>
+                            </div>
+                            <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"
+                                    id="humidity">
+                                </span></div>
+                            <div id="weather-container"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- forecast_panel -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row row1"><span id="day1"></span></div>
+                            <div class="row row2"><img class="img-fluid" /></div>
+                            <i style="font-size:50px ;position:relative ;right:-40px; color: #fff;" id="day1-icon"></i>
+                            <div class="row row3"><span id="dayname1"></span></div>
+                        </div>
+                        <div class="col">
+                            <div class="row row1"><span id="day2"></span></div>
+                            <div class="row row2"><img class="img-fluid" /></div>
+                            <i style="font-size:50px ;position:relative ;right:-40px; color: #fff;" id="day2-icon"></i>
+                            <div class="row row3"><span id="dayname2"></span></div>
+                        </div>
+                        <div class="col">
+                            <div class="row row1"><span id="day3"></span></div>
+                            <div class="row row2"><img class="img-fluid" /></div>
+                            <i style="font-size:50px ;position:relative ;right:-40px; color: #fff;" id="day3-icon"></i>
+                            <div class="row row3"><span id="dayname3"></span></div>
+                        </div>
+                        <div class="col">
+                            <div class="row row1"><span id="day4"></span></div>
+                            <div class="row row2"><img class="img-fluid" /></div>
+                            <i style="font-size:50px ;position:relative ;right:-40px; color: #fff;" id="day4-icon"></i>
+                            <div class="row row3"><span id="dayname4"></span></div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
